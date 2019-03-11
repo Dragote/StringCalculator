@@ -29,8 +29,10 @@ public class Calculator {
                 case(2):
                      //Блок проверки на унарный минус
                      if(expr.charAt(i)=='-' && i==0){
-                         current.append(expr.charAt(i));
-                         continue;
+                         if(getPriority(expr.charAt(i+1))==0){
+                            current.append(expr.charAt(i));
+                            continue;
+                        }
                      }
                      else if(expr.charAt(i)=='-' && getPriority(expr.charAt(i-1))>0&& getPriority(expr.charAt(i+1))==0){
                          current.append(expr.charAt(i));
